@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {% include 'cdnlines.html' %}
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="co-md-4">
+          <h1 class="text-center">Todo List Data</h1>
+          <div class="text-right">
+            <a href="{% url 'form' %}" class="btn btn-danger">Add Data</a>
+
+          </div>
+          {% if data %}
+          <table class=" table table-bordered text-center">
+            <thead class="bg-danger text-white">
+
+            </thead>
+            <tbody class="text-success font-weight-bold">
+              {% for i in data %}
+              <tr>
+                <td>{{i.task_title}}</td>
+                <td>{{i.date}}</td>
+                <td>{{i.task_description}}</td>
+                <td>
+                  <a href="{% url 'updata' i.id %}" class="btn btn-outline-danger">update</a>
+                  <a href="{% url 'delete' i.id %}" class="btn btn-outline-primary">delete</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <h3 class="text-center">Tododata not Available</h3>
+          {% endif %}
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </body>
+</html>
